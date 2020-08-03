@@ -1,12 +1,14 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://textures/backgroundColor.png" type="Texture" id=2]
 [ext_resource path="res://textures/starSmall.png" type="Texture" id=3]
 [ext_resource path="res://textures/starBig.png" type="Texture" id=4]
 [ext_resource path="res://Meteor/Meteor.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Gameplay/Gameplay.gd" type="Script" id=6]
 
 [node name="Gameplay" type="Node2D"]
+script = ExtResource( 6 )
 
 [node name="Background" type="Sprite" parent="."]
 scale = Vector2( 2.67377, 4.00495 )
@@ -40,7 +42,7 @@ emission_rect_extents = Vector2( 80, 1 )
 direction = Vector2( 0, 1 )
 spread = 0.0
 gravity = Vector2( 0, 0 )
-initial_velocity = 70.0
+initial_velocity = 50.0
 initial_velocity_random = 0.06
 angle = 54.1
 angle_random = 1.0
@@ -49,8 +51,18 @@ scale_amount_random = 0.24
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 202.349, 306.041 )
+fireDelay = 0.25
+
+[node name="MeteorSpawn" type="Node2D" parent="."]
+position = Vector2( 201.815, -243.86 )
+
+[node name="mspawn_1" type="Node2D" parent="MeteorSpawn"]
+position = Vector2( -109.316, 18.4997 )
+
+[node name="mspawn_2" type="Node2D" parent="MeteorSpawn"]
+position = Vector2( 114.362, 21.8633 )
 
 [node name="Meteor" parent="." instance=ExtResource( 5 )]
-position = Vector2( 100.908, 77.3624 )
+position = Vector2( 89.8455, 5.77899 )
 minSpeed = 50.0
 maxSpeed = 80.0
